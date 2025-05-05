@@ -1,15 +1,21 @@
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-import App from './src/App.jsx';
-import { StaticRouter } from 'react-router-dom'; // Changed import
-import './src/index.css';
+import React from "react";
+import ReactDOMServer from "react-dom/server";
+import { StaticRouter } from "react-router-dom";
+import App from "./src/App.jsx";
+import "./src/index.css";
 
-export function render(url) {
+function render(url) {
   return ReactDOMServer.renderToString(
-    <React.StrictMode>
-      <StaticRouter location={url}>
-        <App />
-      </StaticRouter>
-    </React.StrictMode>
+    React.createElement(
+      React.StrictMode,
+      null,
+      React.createElement(
+        StaticRouter,
+        { location: url },
+        React.createElement(App, null)
+      )
+    )
   );
 }
+
+export { render };
