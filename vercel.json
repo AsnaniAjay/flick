@@ -1,7 +1,12 @@
 {
-    "rewrites": [
-      { "source": "/(.*)", "destination": "/api/server" }
-    ],
-    "buildCommand": "npm run build",
-    "outputDirectory": "dist"
-  }
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/api/server" }
+  ],
+  "functions": {
+    "api/server.js": {
+      "includeFiles": "dist/**"
+    }
+  },
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist"
+}
